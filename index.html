@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orb Messenger</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    background:#111827;
+    color:white;
+}
+
+.sidebar{
+    width:300px;
+    background:#1f2937;
+    border-right:1px solid #374151;
+    padding:20px;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#60a5fa;
+    margin-bottom:20px;
+}
+
+.contact{
+    padding:15px;
+    margin-bottom:10px;
+    background:#374151;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.contact:hover{
+    background:#4b5563;
+}
+
+.chat{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+}
+
+.header{
+    padding:20px;
+    border-bottom:1px solid #374151;
+    background:#1f2937;
+}
+
+.messages{
+    flex:1;
+    padding:20px;
+    overflow-y:auto;
+}
+
+.message{
+    background:#2563eb;
+    width:max-content;
+    max-width:70%;
+    padding:12px 16px;
+    border-radius:18px;
+    margin-bottom:10px;
+}
+
+.input-area{
+    display:flex;
+    padding:20px;
+    gap:10px;
+    border-top:1px solid #374151;
+}
+
+input{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+}
+
+button{
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="logo">Orb</div>
+
+    <div class="contact">James</div>
+    <div class="contact">Alex</div>
+    <div class="contact">Sarah</div>
+</div>
+
+<div class="chat">
+
+    <div class="header">
+        <h2>James</h2>
+    </div>
+
+    <div class="messages" id="messages">
+        <div class="message">
+            Welcome to Orb 🚀
+        </div>
+    </div>
+
+    <div class="input-area">
+        <input id="messageInput" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+</div>
+
+<script>
+function sendMessage() {
+    const input = document.getElementById('messageInput');
+    const messages = document.getElementById('messages');
+
+    if(input.value.trim() !== '') {
+        const msg = document.createElement('div');
+        msg.className = 'message';
+        msg.textContent = input.value;
+
+        messages.appendChild(msg);
+
+        input.value = '';
+        messages.scrollTop = messages.scrollHeight;
+    }
+}
+</script>
+
+</body>
+</html>
